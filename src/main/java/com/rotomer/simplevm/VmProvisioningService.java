@@ -3,13 +3,9 @@ package com.rotomer.simplevm;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.rotomer.simplevm.messages.ProvisionVmCommand;
 
-import java.util.UUID;
+import static com.rotomer.simplevm.IdGenerator.nextId;
 
 class VmProvisioningService {
-
-    private static String nextId() {
-        return UUID.randomUUID().toString();
-    }
 
     void provisionVm(final byte[] serializedFormat) throws InvalidProtocolBufferException {
         final ProvisionVmCommand provisionVmCommand = ProvisionVmCommand.parseFrom(serializedFormat);
@@ -24,4 +20,3 @@ class VmProvisioningService {
         System.out.println("Provisioned vm:\n" + vm);
     }
 }
-
